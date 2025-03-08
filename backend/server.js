@@ -1,15 +1,15 @@
 import express from "express";
 import dotenv from "dotenv";
-import { connectDb } from "./config/db.js";
+import path from "path";
 import productRoutes from "./routes/product.route.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
+import { connectDb } from "./config/db.js";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
-import path from "path";
-import { fileURLToPath } from "url";
-
+// config to make Swagger  understand where the routes file to work
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
