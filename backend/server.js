@@ -8,7 +8,13 @@ const app = express();
 app.use(express.json()); // this middleware allow us to accept JSON data in the req.body
 
 app.get("/api/products", async (req, res) => {
-    
+    try {
+        const products = await Product.find({});
+        res.status(200).json({ sucess: true, data: products });
+    } catch (error) {
+        console.log("Error fetching the products: ", error.mesage);
+        res.status(500).json({ sucess: false, message: "Server error" });
+    }
 });
 
 app.post("/api/products", async (req, res) => {
